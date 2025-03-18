@@ -45,3 +45,53 @@ FROM INVENTORY
 WHERE QuantityOnHand = 0;
 
 -- QUESTION 2.25
+SELECT SKU, SKU_Description, WarehouseID
+FROM INVENTORY
+WHERE QuantityOnHand = 0
+ORDER BY WarehouseID ASC;
+
+
+-- QUESTION 2.26
+
+SELECT SKU, SKU_Description, WarehouseID
+FROM INVENTORY
+WHERE QuantityOnHand > 0
+ORDER BY WarehouseID DESC, SKU ASC;
+
+
+-- QUESTION 2.27
+
+SELECT SKU, SKU_Description, WarehouseID
+FROM INVENTORY
+WHERE QuantityOnHand = 0 AND QuantityOnOrder > 0
+ORDER BY WarehouseID DESC, SKU ASC;
+
+
+-- QUESTION 2.28
+SELECT SKU, SKU_Description, WarehouseID
+FROM INVENTORY
+WHERE QuantityOnHand = 0 OR QuantityOnOrder = 0
+ORDER BY WarehouseID DESC, SKU ASC;
+
+-- QUESTION 2.29
+SELECT SKU, SKU_Description, WarehouseID, QuantityOnHand
+FROM INVENTORY
+WHERE QuantityOnHand > 1 AND QuantityOnHand < 10;
+
+
+
+-- QUESTION 2.30
+
+SELECT SKU, SKU_Description, WarehouseID, QuantityOnHand
+FROM INVENTORY
+WHERE QuantityOnHand BETWEEN 2 AND 9;
+
+-- QUESTION 2.31
+
+SELECT DISTINCT SKU, SKU_Description
+FROM INVENTORY
+WHERE SKU_Description LIKE 'Half-Dome%';
+
+
+
+
