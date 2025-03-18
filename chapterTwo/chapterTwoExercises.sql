@@ -92,6 +92,51 @@ SELECT DISTINCT SKU, SKU_Description
 FROM INVENTORY
 WHERE SKU_Description LIKE 'Half-Dome%';
 
+-- QUESTION 2.32
+
+SELECT DISTINCT SKU, SKU_Description
+FROM INVENTORY
+WHERE SKU_Description LIKE '%Climb%';
+
+
+-- QUESTION 2.33
+
+SELECT DISTINCT SKU, SKU_Description
+FROM INVENTORY
+WHERE SKU_Description LIKE '__d%';
+
+-- QUESTION 2.34
+
+SELECT 
+    COUNT(QuantityOnHand) AS TotalEntries,
+    SUM(QuantityOnHand) AS TotalQuantity,
+    AVG(QuantityOnHand) AS AverageQuantity,
+    MIN(QuantityOnHand) AS MinimumQuantity,
+    MAX(QuantityOnHand) AS MaximumQuantity
+FROM INVENTORY;
+
+
+-- QUESTION 2.36
+SELECT WarehouseID, SUM(QuantityOnHand) AS TotalItemsOnHand
+FROM INVENTORY
+GROUP BY WarehouseID
+ORDER BY TotalItemsOnHand DESC;
+
+-- QUESTION 2.37
+
+SELECT WarehouseID, SUM(QuantityOnHand) AS TotalItemsOnHandLT3
+FROM INVENTORY
+WHERE QuantityOnHand < 3
+GROUP BY WarehouseID
+ORDER BY TotalItemsOnHandLT3 DESC;
+ 
+
+
+
+
+
+-- QUESTION 2.34
+
 
 
 
