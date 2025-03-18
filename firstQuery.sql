@@ -1,15 +1,19 @@
-create database dynamites;
+-- create database dynamites;
 
-CREATE TABLE users (
- id SERIAL PRIMARY KEY,
- name VARCHAR(100),
- email VARCHAR(100) UNIQUE
-);
+-- CREATE TABLE users (
+--  id SERIAL PRIMARY KEY,
+--  name VARCHAR(100),
+--  email VARCHAR(100) UNIQUE
+-- );
+
+CREATE DATABASE ecommerce;
+
+use ecommerce;
 
 CREATE TABLE Users (
     user_id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(50),
-    email VARCHAR(100),
+    email VARCHAR(100) UNIQUE,
     password VARCHAR(255)
 );
 
@@ -35,3 +39,14 @@ CREATE TABLE Order_Items (
     FOREIGN KEY (order_id) REFERENCES Orders(order_id),
     FOREIGN KEY (product_id) REFERENCES Products(product_id)
 );
+
+
+SHOW tables;
+
+SELECT table_name
+FROM information_schema.tables 
+WHERE table_schema = 'ecommerce';
+
+SELECT column_name
+FROM information_schema.columns 
+WHERE table_schema = 'users';
