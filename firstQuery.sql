@@ -50,3 +50,9 @@ WHERE table_schema = 'ecommerce';
 SELECT column_name
 FROM information_schema.columns 
 WHERE table_schema = 'users';
+
+SELECT * FROM users;
+
+INSERT INTO users(username, email, password)
+VALUES('lumi007','od.fakorede@gmail.com','asdf12345');
+
