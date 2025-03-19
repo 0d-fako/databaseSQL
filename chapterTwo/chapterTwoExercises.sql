@@ -115,6 +115,9 @@ SELECT
     MAX(QuantityOnHand) AS MaximumQuantity
 FROM INVENTORY;
 
+-- Creation of Indexes for frequent column
+
+
 
 -- QUESTION 2.36
 SELECT WarehouseID, SUM(QuantityOnHand) AS TotalItemsOnHand
@@ -133,9 +136,6 @@ ORDER BY TotalItemsOnHandLT3 DESC;
 
 
 
-
-
--- QUESTION 2.34
 
 
 
