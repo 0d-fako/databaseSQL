@@ -117,6 +117,9 @@ FROM INVENTORY;
 
 -- Creation of Indexes for frequent column
 
+CREATE INDEX idx_warehouse_id ON INVENTORY (WarehouseID);
+CREATE INDEX idx_quantity_on_hand ON INVENTORY (QuantityOnHand);
+
 
 
 -- QUESTION 2.36
