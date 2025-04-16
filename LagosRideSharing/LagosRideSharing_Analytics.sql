@@ -144,3 +144,60 @@ INSERT INTO Rides (DriverID, RiderID, Fare, Rating, DistanceKM) VALUES
 (10, 25, 3700, 4.4, 14);
 
 SELECT * FROM Drivers WHERE DriverID NOT IN (1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20);
+
+SELECT * FROM Rides;
+
+
+INSERT INTO Payments (RideID, Amount, PaymentMethod) VALUES
+(101, 3000, 'Card'),
+(102, 2500, 'Cash'),
+(103, 4500, 'Card'),
+(104, 3500, 'Mobile Money'),
+(105, 2000, 'Cash'),
+(106, 4000, 'Card'),
+(107, 2800, 'Mobile Money'),
+(108, 5000, 'Card'),
+(109, 2200, 'Cash'),
+(110, 3700, 'Mobile Money'),
+(111, 3900, 'Card'),
+(112, 3600, 'Cash'),
+(113, 4200, 'Mobile Money'),
+(114, 3300, 'Card'),
+(115, 3800, 'Mobile Money'),
+(116, 2500, 'Cash'),
+(117, 4800, 'Card'),
+(118, 3100, 'Cash'),
+(119, 3300, 'Mobile Money'),
+(120, 4600, 'Card'),
+(121, 2900, 'Cash'),
+(122, 3200, 'Card'),
+(123, 3400, 'Mobile Money'),
+(124, 3100, 'Cash'),
+(125, 3600, 'Card'),
+(126, 2800, 'Mobile Money'),
+(127, 3500, 'Card'),
+(128, 5000, 'Cash'),
+(129, 2300, 'Mobile Money'),
+(130, 3800, 'Card'),
+(131, 4000, 'Cash'),
+(132, 3300, 'Mobile Money'),
+(133, 4100, 'Card'),
+(134, 3100, 'Cash'),
+(135, 4200, 'Mobile Money'),
+(136, 2900, 'Card'),
+(137, 4700, 'Cash'),
+(138, 3300, 'Mobile Money'),
+(139, 3200, 'Card'),
+(140, 4500, 'Cash'),
+(141, 3000, 'Card'),
+(142, 2500, 'Cash'),
+(143, 4500, 'Mobile Money'),
+(144, 3500, 'Card'),
+(145, 2000, 'Cash'),
+(146, 4000, 'Card'),
+(147, 2800, 'Mobile Money'),
+(148, 5000, 'Card'),
+(149, 2200, 'Cash'),
+(150, 3700, 'Mobile Money');
+
+SELECT * FROM Payments
