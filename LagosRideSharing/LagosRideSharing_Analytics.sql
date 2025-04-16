@@ -200,4 +200,4 @@ INSERT INTO Payments (RideID, Amount, PaymentMethod) VALUES
 (149, 2200, 'Cash'),
 (150, 3700, 'Mobile Money');
 
-SELECT * FROM Payments
+SELECT * FROM Payments;
