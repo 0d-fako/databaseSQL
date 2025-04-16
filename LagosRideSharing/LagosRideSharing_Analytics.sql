@@ -33,3 +33,31 @@ CREATE TABLE Payments (
     PaymentMethod VARCHAR(50),
     FOREIGN KEY (RideID) REFERENCES Rides(RideID)
 );
+
+
+
+INSERT INTO Drivers (Name, Rating, TotalRides) VALUES
+('John Doe', 4.5, 120),
+('Jane Smith', 4.2, 90),
+('James Bond', 4.7, 150),
+('Samantha James', 4.3, 80),
+('Michael Brown', 4.0, 60),
+('Nina Williams', 4.6, 200),
+('Chris Johnson', 4.1, 110),
+('Sarah Davis', 4.8, 100),
+('David Lee', 3.9, 70),
+('Emma Green', 4.4, 130),
+('Olumide Adebayo', 4.7, 150),
+('Grace Okafor', 4.3, 140),
+('Julius Adedeji', 4.6, 175),
+('Tolu Olowolagba', 4.2, 105),
+('Fola Akinwunmi', 4.5, 125),
+('Oluwaseun Bello', 4.1, 115),
+('Kayode Ogunleye', 4.8, 180),
+('Chinonso Ifeanyi', 3.8, 85),
+('Oluwafunmilayo Bello', 4.3, 140),
+('Adeola Akin', 4.6, 160);
+
+
+SELECT * from Drivers
+
