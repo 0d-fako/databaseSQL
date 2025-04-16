@@ -201,3 +201,6 @@ INSERT INTO Payments (RideID, Amount, PaymentMethod) VALUES
 (150, 3700, 'Mobile Money');
 
 SELECT * FROM Payments;
+
+
+-- Top 5 highest-rated drivers in Lagos
