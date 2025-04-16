@@ -59,5 +59,35 @@ INSERT INTO Drivers (Name, Rating, TotalRides) VALUES
 ('Adeola Akin', 4.6, 160);
 
 
-SELECT * from Drivers
+SELECT * from Drivers;
+
+INSERT INTO Riders (Name, City) VALUES
+('Alice Johnson', 'Lekki'),
+('Victor Martins', 'Ikeja'),
+('Funke Bello', 'Victoria Island'),
+('Tunde Adeyemi', 'Surulere'),
+('Grace Olamide', 'Yaba'),
+('Kingsley Obi', 'Lekki'),
+('Folasade Okoro', 'Ikeja'),
+('Emeka Okafor', 'Victoria Island'),
+('Temilade Adedeji', 'Lekki'),
+('Rita Durojaiye', 'Surulere'),
+('Chuka Nwosu', 'Yaba'),
+('Ayotunde Adeleke', 'Ikeja'),
+('Lola Abiola', 'Lekki'),
+('Olumide Bakare', 'Surulere'),
+('Chidera Okonkwo', 'Victoria Island'),
+('Wale Oni', 'Yaba'),
+('Olivia Adebayo', 'Lekki'),
+('Temidayo Alabi', 'Ikeja'),
+('Micheal Ojo', 'Victoria Island'),
+('Tolu Ayinde', 'Surulere'),
+('Grace Williams', 'Lekki'),
+('Olumide Ayodele', 'Ikeja'),
+('James Osundare', 'Yaba'),
+('Chika Okafor', 'Surulere'),
+('Sandra Ogunleye', 'Victoria Island');
+
+
+SELECT * from Riders;
 
