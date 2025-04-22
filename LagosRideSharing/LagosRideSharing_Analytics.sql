@@ -286,3 +286,17 @@ GROUP BY r.RiderID, r.Name
 HAVING AVG(rd.Rating) < 3;
 
 SELECT * FROM LowRatingRiders;
+
+-- Top 5 Neighborhood in Lagos
+CREATE TABLE Top5LagosNeighborhoods AS
+SELECT 
+    r.City AS Neighborhood,
+    AVG(rd.Fare) AS AverageFare
+FROM Riders r
+JOIN Rides rd ON r.RiderID = rd.RiderID
+WHERE r.City IN ('Lekki', 'Ikeja', 'Victoria Island', 'Surulere', 'Yaba')
+GROUP BY r.City
+ORDER BY AverageFare DESC
+LIMIT 5;
+
+SELECT * FROM Top5LagosNeighborhoods;
