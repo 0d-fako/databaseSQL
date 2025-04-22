@@ -204,3 +204,33 @@ SELECT * FROM Payments;
 
 
 -- Top 5 highest-rated drivers in Lagos
+CREATE TABLE Top5RatedDrivers AS
+SELECT DriverID, Name, Rating, TotalRides
+FROM Drivers
+ORDER BY Rating DESC, TotalRides DESC
+LIMIT 5;
+
+SELECT * FROM Top5RatedDrivers;
+
+-- Riders with more than 5 rides in the last 30 days in Lagos
+
+CREATE TABLE ActiveRiders AS
+SELECT r.RiderID, r.Name, r.City, COUNT(rd.RideID) AS TotalRides
+FROM Riders r
+JOIN Rides rd ON r.RiderID = rd.RiderID
+WHERE rd.RideID IN (
+    SELECT RideID FROM Rides WHERE DATE_SUB(CURDATE(), INTERVAL 30 DAY) <= CURDATE()
+)
+GROUP BY r.RiderID, r.Name, r.City
+HAVING TotalRides > 5;
+
+SELECT * FROM ActiveRiders;
+
+-- Total revenue for the past month for Lagos rides
+CREATE TABLE MonthlyRevenue AS
+SELECT SUM(p.Amount) AS TotalRevenue
+FROM Payments p
+JOIN Rides r ON p.RideID = r.RideID
+WHERE DATE_SUB(CURDATE(), INTERVAL 30 DAY) <= CURDATE();
+
+SELECT * FROM MonthlyRevenue;
