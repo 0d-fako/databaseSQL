@@ -234,3 +234,55 @@ JOIN Rides r ON p.RideID = r.RideID
 WHERE DATE_SUB(CURDATE(), INTERVAL 30 DAY) <= CURDATE();
 
 SELECT * FROM MonthlyRevenue;
+
+-- Busiest Areas in Lagos
+CREATE TABLE Top3BusiestAreas AS
+SELECT r.City, COUNT(rd.RideID) AS TotalRides
+FROM Riders r
+JOIN Rides rd ON r.RiderID = rd.RiderID
+GROUP BY r.City
+ORDER BY TotalRides DESC
+LIMIT 3;
+
+SELECT * FROM Top3BusiestAreas;
+
+
+-- Driver with the highest revenue in Lagos
+
+CREATE TABLE TopEarningDriver AS
+SELECT d.DriverID, d.Name, SUM(p.Amount) AS TotalRevenue
+FROM Drivers d
+JOIN Rides r ON d.DriverID = r.DriverID
+JOIN Payments p ON r.RideID = p.RideID
+GROUP BY d.DriverID, d.Name
+ORDER BY TotalRevenue DESC
+LIMIT 1;
+
+SELECT * FROM TopEarningDriver;
+
+-- Find rides where the fare is more than 50% higher or lower than the average fare
+
+CREATE TABLE OutlierRidesInLag AS
+SELECT 
+    r.RideID,
+    r.Fare,
+    (SELECT AVG(Fare) FROM Rides) AS AverageFare
+FROM Rides r
+WHERE r.Fare > (SELECT AVG(Fare) FROM Rides) * 1.1 
+   OR r.Fare < (SELECT AVG(Fare) FROM Rides) * 0.1;
+
+SELECT * FROM OutlierRidesInLag;
+
+-- Find riders in Lagos who rated their drivers less than 3 on average
+CREATE TABLE LowRatingRiders AS
+SELECT 
+    r.RiderID,
+    r.Name,
+    AVG(rd.Rating) AS AverageRating
+FROM Riders r
+JOIN Rides rd ON r.RiderID = rd.RiderID
+WHERE r.City = 'Lagos'
+GROUP BY r.RiderID, r.Name
+HAVING AVG(rd.Rating) < 3;
+
+SELECT * FROM LowRatingRiders;
