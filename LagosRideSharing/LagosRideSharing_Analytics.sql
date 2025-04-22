@@ -363,3 +363,16 @@ SELECT MAX(Amount) FROM Payments;
 
 
 
+-- Find rides in Lagos with a duration longer than 2 hours
+CREATE TABLE LongRidesLagos AS
+SELECT 
+    r.RideID,
+    r.DistanceKM,
+    r.DriverID,
+    r.RiderID
+FROM Rides r
+JOIN Riders rd ON r.RiderID = rd.RiderID
+WHERE rd.City IN ('Lekki', 'Ikeja', 'Victoria Island', 'Surulere', 'Yaba') 
+AND r.DistanceKM >= (2 * 40); -- Assuming an average speed of 40 km/h
+
+SELECT * FROM LongRidesLagos;
