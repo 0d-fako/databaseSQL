@@ -300,3 +300,66 @@ ORDER BY AverageFare DESC
 LIMIT 5;
 
 SELECT * FROM Top5LagosNeighborhoods;
+
+
+-- Drivers wih no rides in the past 30 days
+
+CREATE TABLE InactiveDriversInLagos AS
+SELECT d.DriverID, d.Name
+FROM Drivers d
+WHERE d.DriverID NOT IN (
+    SELECT DISTINCT DriverID FROM Rides
+    WHERE DATE_SUB(CURDATE(), INTERVAL 30 DAY) <= CURDATE()
+);
+
+SELECT * FROM InactiveDriversInLagos;
+
+-- Rides in Lagos with the longest distance (top 5)
+CREATE TABLE LongestRidesLagos AS
+SELECT 
+    r.RideID,
+    r.DistanceKM,
+    r.DriverID,
+    r.RiderID
+FROM Rides r
+JOIN Riders rd ON r.RiderID = rd.RiderID
+WHERE rd.City IN ('Lekki', 'Ikeja', 'Victoria Island', 'Surulere', 'Yaba') 
+ORDER BY r.DistanceKM DESC
+LIMIT 5;
+
+SELECT * FROM LongestRidesLagos;
+
+
+-- Find the number of rides each driver in Lagos has had, sorted by the most rides
+CREATE TABLE DriverRideCounts AS
+SELECT 
+    d.DriverID, 
+    d.Name, 
+    COUNT(r.RideID) AS TotalRides
+FROM Drivers d
+JOIN Rides r ON d.DriverID = r.DriverID
+JOIN Riders rd ON r.RiderID = rd.RiderID
+WHERE rd.City IN ('Lekki', 'Ikeja', 'Victoria Island', 'Surulere', 'Yaba') 
+GROUP BY d.DriverID, d.Name
+ORDER BY TotalRides DESC;
+
+SELECT * FROM DriverRideCounts;
+
+-- Payment methods used by Lagos riders for rides over ₦50,000
+CREATE TABLE HighValuePayments AS
+SELECT 
+    p.PaymentMethod, 
+    COUNT(p.PaymentID) AS NumberOfTransactions
+FROM Payments p
+JOIN Rides r ON p.RideID = r.RideID
+JOIN Riders rd ON r.RiderID = rd.RiderID
+WHERE p.Amount > 50000 
+AND rd.City IN ('Lekki', 'Ikeja', 'Victoria Island', 'Surulere', 'Yaba')
+GROUP BY p.PaymentMethod
+ORDER BY NumberOfTransactions DESC;
+
+SELECT * FROM HighValuePayments;
+SELECT MAX(Amount) FROM Payments;
+
+
+
